@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../themes/default/markeditor.css" />
+    <link rel="stylesheet" href="./vendor/codemirror.css" />
+    <link rel="stylesheet" href="./vendor/icomoon/style.css" />
+    <title>Editor</title>
+    <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #f9f9f7;
+      }
+      .editor-wrapper {
+        max-width: 680px;
+        padding: 10px;
+        margin: 60px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-wrapper">
+      <input class="title" type="text" placeholder="Title" />
+      <textarea id="editor" placeholder="Content here ...."></textarea>
+    </div>
+    <script type="text/javascript" src="./vendor/codemirror.js"></script>
+    <script type="text/javascript" src="./vendor/xml.js"></script>
+    <script type="text/javascript" src="./vendor/continuelist.js"></script>
+    <!-- only required for loading sample markdown into the textarea -->
+    <script type="text/javascript" src="../dist/uncompressed/skylark-ui-markeditor-all.js"></script>
+    <script type="text/javascript">
+    (function($) {
+      /*
+    // handle optional data/success arguments
+    function parseArguments(url, data, success, dataType) {
+        if (skylarkjs.langx.isFunction(url)) {
+            dataType = data, success = url, data = undefined,url = undefined;
+        } else if (skylarkjs.langx.isFunction(data)) {
+            dataType = success, success = data, data = undefined;
+        } 
+        if (!skylarkjs.langx.isFunction(success)) dataType = success, success = undefined
+        return {
+            url: url,
+            data: data,
+            success: success,
+            dataType: dataType
+        }
+    }
+    var originalLoad = $.fn.load;
+
+    $.fn.load = function(url, data, success) {
+        if ("string" != typeof url && originalLoad) {
+            return originalLoad.apply(this, arguments);
+        }
+        if (!this.length) return this
+        var self = this,
+            options = parseArguments(url, data, success),
+            parts = options.url && options.url.split(/\s/),
+            selector,
+            callback = options.success
+        if (parts && parts.length > 1) options.url = parts[0], selector = parts[1]
+        options.success = function(response) {
+            self.html(selector ?
+                $('<div>').html(response.replace(rscript, "")).find(selector) : response)
+            callback && callback.apply(self, arguments)
+        }
+
+        var p = skylarkjs.langx.Xhr.request(options.url,options);
+        if (options.success) {
+            p = p.then(options.success,options.error);
+        }
+        //$.ajax(options)
+        return this
+    }
+      $('#editor').load('markdown.md',
+        function(data) {
+          var editor = new skylarkjs.ui.MarkEditor();
+          editor.render();
+        }
+      );
+    */
+      skylarkjs.langx.Xhr.get('markdown.md').then(
+        function(data) {
+          $("#editor").val(data);
+          var editor = new skylarkjs.ui.MarkEditor();
+          editor.render();
+        }
+      );
+    })(skylarkjs.query);
+    </script>
+  </body>
+</html>

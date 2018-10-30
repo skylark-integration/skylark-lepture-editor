@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["define","MarkEditor"],"mappings":";;;;;;;AAAAA,QACI,gBACD,SAASC,GACR,MAAOA","file":"../main.js","sourcesContent":["define([\r\n    \"./MarkEditor\"\r\n], function(MarkEditor) {\r\n    return MarkEditor;\r\n});\r\n"]}
