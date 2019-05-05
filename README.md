@@ -1,2 +1,2 @@
-# skylark-ui-mdeditor
-The skylark markdown editor widget library.
+# skylark-lepture-editor
+A version of lepture markdown editor  that ported to running on skylarkjs.
